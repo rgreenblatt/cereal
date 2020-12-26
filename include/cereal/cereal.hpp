@@ -41,36 +41,13 @@
 #include <functional>
 
 #include "cereal/macros.hpp"
+#include "cereal/name_value_pair.hpp"
 #include "cereal/details/traits.hpp"
 #include "cereal/details/helpers.hpp"
 #include "cereal/types/base_class.hpp"
 
 namespace cereal
 {
-  // ######################################################################
-  //! Creates a name value pair
-  /*! @relates NameValuePair
-      @ingroup Utility */
-  template <class T> inline
-  NameValuePair<T> make_nvp( std::string const & name, T && value )
-  {
-    return {name.c_str(), std::forward<T>(value)};
-  }
-
-  //! Creates a name value pair
-  /*! @relates NameValuePair
-      @ingroup Utility */
-  template <class T> inline
-  NameValuePair<T> make_nvp( const char * name, T && value )
-  {
-    return {name, std::forward<T>(value)};
-  }
-
-  //! Creates a name value pair for the variable T with the same name as the variable
-  /*! @relates NameValuePair
-      @ingroup Utility */
-  #define CEREAL_NVP(T) ::cereal::make_nvp(#T, T)
-
   // ######################################################################
   //! Convenience function to create binary data for both const and non const pointers
   /*! @param data Pointer to beginning of the data
